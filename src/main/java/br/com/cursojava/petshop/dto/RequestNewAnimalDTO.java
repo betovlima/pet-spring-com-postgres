@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 //TODO trocar por padrão DTO
+
 @Getter
 @Setter
 public class RequestNewAnimalDTO {

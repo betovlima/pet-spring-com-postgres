@@ -19,7 +19,8 @@ public class AnimalController {
         this.animalService = animalService;
     }
 
-    //TODO ajustar endpoints para retornar e receber no padrão DTO
+    //TODO ajustar endpoints para retornar
+    // e receber no padrão DTO
     //Cria Animal
     @PostMapping(value = "/salva-animal", consumes = "application/json")
     public ResponseEntity<Animal> criaAnimal(@RequestBody RequestNewAnimalDTO dto) {

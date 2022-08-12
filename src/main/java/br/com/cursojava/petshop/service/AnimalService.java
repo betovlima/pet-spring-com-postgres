@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO ajustar com anotation lombok para deixar código mais clean sem construtor declarado
+//TODO ajustar com anotation lombok para deixar código
+// mais clean sem construtor declarado
 @AllArgsConstructor
 @Service
 public class AnimalService {
