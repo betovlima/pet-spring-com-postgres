@@ -1,9 +1,9 @@
 package br.com.cursojava.petshop.controller;
 
+import br.com.cursojava.petshop.dto.RequestNewAnimalDTO;
+import br.com.cursojava.petshop.dto.ResultListAnimalDTO;
 import br.com.cursojava.petshop.model.Animal;
-import br.com.cursojava.petshop.model.Usuario;
 import br.com.cursojava.petshop.service.AnimalService;
-import br.com.cursojava.petshop.service.UsuarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +19,19 @@ public class AnimalController {
         this.animalService = animalService;
     }
 
+    //TODO ajustar endpoints para retornar e receber no padrão DTO
     //Cria Animal
     @PostMapping(value = "/salva-animal", consumes = "application/json")
-    public ResponseEntity<Animal> criaAnimal(@RequestBody Animal animal) {
-        animal = animalService.criarAnimal(animal);
-        return new ResponseEntity<>(animal, HttpStatus.CREATED);
+    public ResponseEntity<Animal> criaAnimal(@RequestBody RequestNewAnimalDTO dto) {
+        return new ResponseEntity<>(animalService.criarAnimal(dto), HttpStatus.CREATED);
     }
 
+
+    //TODO ajustar endpoints para retornar no padrão DTO
     //Busca todos os animais
-    @GetMapping("/todos-animais")
-    public ResponseEntity<List<Animal>> getTodosUsuarios() {
-        List<Animal> animais = animalService.getAnimal();
+    @PostMapping("/todos-animais")
+    public ResponseEntity<List<ResultListAnimalDTO>> getTodosUsuarios() {
+        List<ResultListAnimalDTO> animais = animalService.getAnimal();
         return new ResponseEntity<>(animais, HttpStatus.OK);
     }
 
