@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 //TODO ajustar com anotation lombok para deixar código
 // mais clean sem construtor declarado
@@ -44,11 +45,11 @@ public class AnimalService {
         return animalRepository.findByIdade(idade);
     }
 
-    public Animal criarAnimal(RequestNewAnimalDTO novo) {
-        return animalRepository
+    public Optional<Animal> criarAnimal(RequestNewAnimalDTO novo) {
+        return Optional.of(animalRepository
                 .save(
                         this.mapper.map(novo, Animal.class)
-                );
+                ));
     }
 
     public Animal alteraAnimal(Animal animal) {

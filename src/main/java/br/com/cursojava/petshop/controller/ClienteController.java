@@ -18,8 +18,8 @@ public class ClienteController {
     }
 
     //Cria cliente
-    @PostMapping(value = "/salva-cliente", consumes = "application/json")
-    public ResponseEntity<Cliente> criaCliente(@RequestBody Cliente cliente) {
+    @PostMapping(value = "/salva-cliente")
+    public ResponseEntity<Cliente> criaCliente(Cliente cliente) {
         cliente = clienteService.criaCliente(cliente);
         return new ResponseEntity<>(cliente, HttpStatus.CREATED);
     }

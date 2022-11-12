@@ -11,26 +11,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/clinica-vet")
 public class AnimalController {
 
     private final AnimalService animalService;
 
-    public AnimalController(AnimalService  animalService) {
+    public AnimalController(AnimalService animalService) {
         this.animalService = animalService;
     }
 
     //TODO ajustar endpoints para retornar
     // e receber no padrão DTO
     //Cria Animal
-    @PostMapping(value = "/salva-animal", consumes = "application/json")
-    public ResponseEntity<Animal> criaAnimal(@RequestBody RequestNewAnimalDTO dto) {
-        return new ResponseEntity<>(animalService.criarAnimal(dto), HttpStatus.CREATED);
+    @PostMapping(value = "/salva-animal")
+    public ResponseEntity criaAnimal(RequestNewAnimalDTO dto) {
+        return ResponseEntity.ok(animalService.criarAnimal(dto));
     }
 
 
     //TODO ajustar endpoints para retornar no padrão DTO
     //Busca todos os animais
-    @PostMapping("/todos-animais")
+    @GetMapping("/todos-animais")
     public ResponseEntity<List<ResultListAnimalDTO>> getTodosUsuarios() {
         List<ResultListAnimalDTO> animais = animalService.getAnimal();
         return new ResponseEntity<>(animais, HttpStatus.OK);
@@ -55,14 +56,15 @@ public class AnimalController {
     }
 
     //Altera animal
-    @PutMapping (value = "/altera-animal", consumes = "application/json")
+    @PutMapping(value = "/altera-animal", consumes = "application/json")
     public ResponseEntity<Animal> alteraAnimal(@RequestBody Animal animal) {
         animal = animalService.alteraAnimal(animal);
         return new ResponseEntity<>(animal, HttpStatus.OK);
     }
+
     //Delete animal
     @DeleteMapping(value = "/deleta-animal", consumes = "application/json")
-    public ResponseEntity<Animal> deletaAnimal(@RequestBody Animal animal){
+    public ResponseEntity<Animal> deletaAnimal(@RequestBody Animal animal) {
         animal = animalService.deletaAnimal(animal);
         return new ResponseEntity<>(animal, HttpStatus.OK);
     }
