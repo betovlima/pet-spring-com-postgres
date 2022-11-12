@@ -7,7 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//TODO ajustar endpoint para retornar
+// e receber no padrão DTO
 @RestController
 public class ClienteController {
 
@@ -17,7 +18,7 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    //Cria cliente
+
     @PostMapping(value = "/salva-cliente")
     public ResponseEntity<Cliente> criaCliente(Cliente cliente) {
         cliente = clienteService.criaCliente(cliente);

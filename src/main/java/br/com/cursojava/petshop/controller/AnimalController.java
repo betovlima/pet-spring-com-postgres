@@ -9,7 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//TODO ajustar endpoint para retornar
+// e receber no padrão DTO
 @RestController
 @RequestMapping("/clinica-vet")
 public class AnimalController {
@@ -20,9 +21,7 @@ public class AnimalController {
         this.animalService = animalService;
     }
 
-    //TODO ajustar endpoints para retornar
-    // e receber no padrão DTO
-    //Cria Animal
+
     @PostMapping(value = "/salva-animal")
     public ResponseEntity criaAnimal(RequestNewAnimalDTO dto) {
         return ResponseEntity.ok(animalService.criarAnimal(dto));

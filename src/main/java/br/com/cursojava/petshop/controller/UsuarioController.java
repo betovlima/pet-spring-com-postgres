@@ -7,7 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//TODO ajustar endpoints para retornar
+// e receber no padrão DTO
 @RestController
 public class UsuarioController {
 
@@ -17,9 +18,9 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    //Create do Crud
+
     @PostMapping(value = "/salva-usuario", consumes = "application/json")
-    public ResponseEntity<Usuario> salvaUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> salvaUsuario(Usuario usuario) {
         usuario = usuarioService.criarUsuario(usuario);
         return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }
